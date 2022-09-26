@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Input from "../../components/input";
 import { LoginContainer, Container, LogoContainer } from "./styles";
 import Button from "../../components/Button";
@@ -13,13 +13,13 @@ import { FaEye } from "react-icons/fa";
 
 export default function Login() {
   const schema = yup.object().shape({
-    email: yup.string().email("Email inválido").required("Campo obrigatório!"),
+    full_name: yup.string().required("Campo obrigatório!"),
     password: yup
       .string()
       .min(6, "Mínimo de 6 dígitos")
       .required("Campo obrigatório!"),
   });
-  const history = useHistory();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -36,7 +36,7 @@ export default function Login() {
       .then((res) => {
         saveUserInfo(res.data);
 
-        return history.push("/contact");
+        return <Link to="/contact" state={{ from: location }} />;
       })
       .catch((_) => toast.error("Email ou senha inválidos!"));
   };
@@ -51,7 +51,7 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
             name="full_name"
-            error={errors.email?.message}
+            error={errors.full_name?.message}
             register={register}
             placeholder="Digite aqui seu nome completo"
           />
@@ -72,7 +72,9 @@ export default function Login() {
 
             <Button
               landingSchema
-              onClick={() => history.push("/user/register")}
+              onClick={() => (
+                <Link to="/user/register" state={{ from: location }} />
+              )}
             >
               Cadastre-se aqui!
             </Button>

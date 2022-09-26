@@ -2,10 +2,10 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import GlobalStyle from "./styles/global";
 import Modal from "react-modal";
-import EventsModal from "./components/EventsModal";
+//import EventsModal from "./components/EventsModal";
 import { useRegisterModal } from "./providers/RegisterModal";
 import { customStyles } from "./styles/global";
-import Routes from "./routes";
+import RoutesPath from "./routes";
 import "react-toastify/dist/ReactToastify.css";
 //Setando o pai do Modal, no nosso caso #root
 Modal.setAppElement("#root");
@@ -22,9 +22,9 @@ function App() {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <EventsModal />
+        {/* <EventsModal /> */}
       </Modal>
-      <Routes />
+      <RoutesPath />
       <ToastContainer
         autoClose={3000}
         theme="dark"

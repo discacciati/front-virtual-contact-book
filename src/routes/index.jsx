@@ -4,12 +4,12 @@ import Home from "../pages/home";
 import Contact from "../pages/contact";
 import User from "../pages/user";
 import Users from "../pages/users";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useUserInfo } from "../providers/userInfo";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Routes = () => {
+const RoutesPath = () => {
   const { getUserInfo, isAuthenticated } = useUserInfo();
 
   useEffect(() => {
@@ -21,36 +21,36 @@ const Routes = () => {
   }, []);
 
   return (
-    <Switch>
+    <Routes>
       <Route exact path="/">
-        <Redirect to={isAuthenticated ? "/contact" : "/user/login"} />
+        <Link to={isAuthenticated ? "/contact" : "/user/login"} />
         <Login />
       </Route>
       <Route path="/user/login">
         <Login />
       </Route>
       <Route path="/user/register">
-        {isAuthenticated && <Redirect to="/contact" />}
+        {isAuthenticated && <Link to="/contact" />}
         <Register />
       </Route>
       <Route path="/contact">
-        {!isAuthenticated && <Redirect to="/" />}
+        {!isAuthenticated && <Link to="/" />}
         <Home />
       </Route>
       <Route path="/contact/:id">
-        {!isAuthenticated && <Redirect to="/" />}
+        {!isAuthenticated && <Link to="/" />}
         <Contact />
       </Route>
       <Route path="/user/:id">
-        {!isAuthenticated && <Redirect to="/" />}
+        {!isAuthenticated && <Link to="/" />}
         <User />
       </Route>
       <Route path="/user">
-        {!isAuthenticated && <Redirect to="/" />}
+        {!isAuthenticated && <Link to="/" />}
         <Users />
       </Route>
-    </Switch>
+    </Routes>
   );
 };
 
-export default Routes;
+export default RoutesPath;

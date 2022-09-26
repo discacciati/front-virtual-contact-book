@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const requestApi = axios.create({
-  baseURL: "https://clickfinder-json-server.herokuapp.com/api/",
+  baseURL: "https://api-cadastro-contatos.herokuapp.com/api/",
 });
 
 requestApi.requestAuth = (url, token, method = "get", data = {}) => {

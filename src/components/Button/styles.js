@@ -5,15 +5,15 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   background: ${(props) =>
-    props.beigeSchema
-      ? "var(--beige)"
+    props.greySchema
+      ? "var(--grey)"
       : props.greySchema
       ? "var(--grey)"
       : props.landingSchema
       ? "var(--grey)"
-      : "var(--orange)"};
+      : "var(--blue)"};
   border: 1px solid
-    ${(props) => (props.beigeSchema ? "var(--black)" : "var(--orange)")};
+    ${(props) => (props.greySchema ? "var(--blue)" : "var(--grey)")};
   border-radius: 8px;
   height: 42px;
   padding: 0 5px;
@@ -22,35 +22,35 @@ export const Container = styled.button`
   font-weight: 500;
   line-height: 26px;
   color: ${(props) =>
-    props.beigeSchema
+    props.greySchema
       ? "var(--black)"
       : props.greySchema
-      ? "var(--beige)"
+      ? "var(--black)"
       : props.landingSchema
-      ? "var(--vanilla)"
+      ? "var(--greyfont)"
       : "var(--black)"};
   margin: 0px 5px;
 
   :hover {
     box-shadow: inset 0 0 1em
       ${(props) =>
-        props.beigeSchema
+        props.greySchema
           ? "var(--black)"
           : props.landingSchema
-          ? "var(--orange)"
+          ? "var(--blue)"
           : "var(--black)"};
     color: ${(props) =>
-      props.beigeSchema
+      props.greySchema
         ? "var(--black)"
         : props.landingSchema
-        ? "var(--vanilla)"
+        ? "var(--greyfont)"
         : "var(--black)"};
     border: 1px solid
       ${(props) =>
-        props.beigeSchema
+        props.greySchema
           ? "var(--black)"
           : props.landingSchema
-          ? "var(--orange)"
+          ? "var(--grey)"
           : "var(--black)"};
   }
   :active {

@@ -11,8 +11,7 @@ const Button = ({
   return (
     <Container
       landingSchema={landingSchema}
-      beigeSchema={beigeSchema}
-      greySchema={greySchema}
+      beigeSchema={greySchema}
       type={type}
       {...rest}
     >

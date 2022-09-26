@@ -16,7 +16,7 @@ export const ContactListProvider = ({ children }) => {
   }
 
   async function contactFilter(data) {
-    const { data: user } = await requestApi.get(`/contact/${id}`);
+    //  const { data: user } = await requestApi.get(`/contact/${id}`);
 
     return data.filter((contact) => {
       const canSee = contact.find((userId) => userId === id);
